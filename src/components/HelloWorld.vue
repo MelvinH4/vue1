@@ -1,30 +1,14 @@
 <template>
   <div class="hello">
-    <h1><a v-bind:href="link">{{msg}}</a></h1>
-
-    <!-- Enviando datos al componente "VerComponente" normal-->
-    <VerComponente mensaje-normal="MensajeNormal"></VerComponente>
-
-    <!-- enviando datos al componente "VerComponente" si data es un ARRAY-->
-    <VerComponente
-    v-for="dato in datos"
-    v-bind:key="dato.id"
-    v-bind:titulo="dato.titulo"
-    v-bind:clase="dato.clase"></VerComponente>
+      <p>{{nombre}} {{apellido}}</p>
   </div>
 </template>
 
 <script>
-import VerComponente from "@/components/VerComponente";
 export default {
-  components:{
-    VerComponente
-  },
   name: 'HelloWorld',
-  props: {
-    msg: String,
-    link: String,
-  },
+  props: ['nombre','apellido'],
+
   data:function () {
     return{
       datos:[
