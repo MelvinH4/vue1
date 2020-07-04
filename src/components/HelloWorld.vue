@@ -1,24 +1,53 @@
 <template>
   <div class="hello">
-      <p>{{nombre}} {{apellido}}</p>
+    <ul>
+      <li> <span>DINNER----></span>{{TotalDinner}}<button @click="IncreaseDinner">+</button>
+           <button @click="DecreaseDinner">-</button></li>
+    </ul>
+    <ul>
+      <li> <span>TIP--></span>{{TotalTip}}<button @click="IncreaseTip">+</button>
+           <button @click="DecreaseTip">-</button></li>
+    </ul>
+    <ul>
+      <li> <span>TOTAL COMPRA</span>{{total}}</li>
+    </ul>
   </div>
 </template>
 
 <script>
+//I will not use this component for this example exercise
+import VerComponente from "@/components/VerComponente";
 export default {
   name: 'HelloWorld',
-  props: ['nombre','apellido'],
-
-  data:function () {
+  component:{
+    VerComponente
+  },
+  data: function (){
     return{
-      datos:[
-        {id:1, titulo:'TITULO 1', clase:'Entretenimiento'},
-        {id:2, titulo:'TITULO 2', clase:'Amor'},
-        {id:3, titulo:'TITULO 3', clase:'Ficcion'}
-      ]
+      TotalDinner:"",
+      TotalTip:0
+    }
+  },
+  computed:{
+    total(){
+       return this.TotalDinner+this.TotalTip
+    }
+  },
+  methods:{
+    IncreaseDinner(){
+      this.TotalDinner++;
+    },
+    DecreaseDinner(){
+      this.TotalDinner--;
+    },
+    IncreaseTip(){
+      this.TotalTip++;
+    },
+    DecreaseTip(){
+      this.TotalTip--;
     }
   }
-  }
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
